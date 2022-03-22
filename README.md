@@ -13,7 +13,12 @@
 - [x] 자바스크립트 파일을 타입스크립트 파일로 변환
 - [x] `tsc` 명령어로 타입스크립트 컴파일 하기
 
-2. 명시적인 `any` 선언하기 -`tsconfig.json` 파일에 `noImplicitAny` 값을 `true`로 추가
+2. 명시적인 `any` 선언하기 
+  -`tsconfig.json` 파일에 `noImplicitAny` 값을 `true`로 추가
+  - 가능한한 구체적인 타입으로 타입 정의
+3. 프로젝트 환경 구성
+  - bable, eslint, prettier 등의 환경 설정
+4. 외부 라이브러리 모듈화
 
 ## 타입스크립트 프로젝트 환경 구성
 

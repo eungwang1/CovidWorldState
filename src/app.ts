@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { Chart } from 'chart.js';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -129,6 +132,7 @@ function clearDeathList() {
 
 function setTotalDeathsByCountry(data: any) {
   deathsTotal.innerText = data[0].Cases;
+  console.log(data);
 }
 
 function setRecoveredList(data: any) {
@@ -177,7 +181,8 @@ async function setupData() {
 }
 
 function renderChart(data: any, labels: any) {
-  const ctx = $('#lineChart').getContext('2d');
+  const ctx = $('#lineChart') as HTMLCanvasElement;
+  ctx.getContext('2d');
   Chart.defaults.color = '#f5eaea';
   Chart.defaults.font.family = 'Exo 2';
   new Chart(ctx, {
@@ -197,7 +202,7 @@ function renderChart(data: any, labels: any) {
   });
 }
 
-function setChartData(data: any) {
+function setChartData(data: any[]) {
   const chartData = data.slice(-14).map(value => value.Cases);
   const chartLabel = data
     .slice(-14)
@@ -207,21 +212,24 @@ function setChartData(data: any) {
 
 function setTotalConfirmedNumber(data: any) {
   confirmedTotal.innerText = data.Countries.reduce(
-    (total, current) => (total += current.TotalConfirmed),
+    (total: any, current: { TotalConfirmed: any }) =>
+      (total += current.TotalConfirmed),
     0
   );
 }
 
 function setTotalDeathsByWorld(data: any) {
   deathsTotal.innerText = data.Countries.reduce(
-    (total, current) => (total += current.TotalDeaths),
+    (total: any, current: { TotalDeaths: any }) =>
+      (total += current.TotalDeaths),
     0
   );
 }
 
 function setTotalRecoveredByWorld(data: any) {
   recoveredTotal.innerText = data.Countries.reduce(
-    (total, current) => (total += current.TotalRecovered),
+    (total: any, current: { TotalRecovered: any }) =>
+      (total += current.TotalRecovered),
     0
   );
 }
