@@ -1,0 +1,23 @@
+{
+  "name": "covidworldstate",
+  "version": "1.0.0",
+  "description": "코로나바이러스 실시간 세계현황을 보여주는 서비스",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eungwang1/CovidWorldState.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eungwang1/CovidWorldState/issues"
+  },
+  "homepage": "https://github.com/eungwang1/CovidWorldState#readme",
+  "dependencies": {
+    "typescript": "^4.6.2"
+  }
+}
