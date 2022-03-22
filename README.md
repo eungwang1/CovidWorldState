@@ -77,7 +77,6 @@ node_modules
 
 ```js
 {
-  // ... <-- 기존 내용을 꼭 유지한 상태에서 아래 내용을 추가하고 이 주석은 제거할 것
   "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
   },
