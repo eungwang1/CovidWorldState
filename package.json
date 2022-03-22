@@ -17,7 +17,15 @@
     "url": "https://github.com/eungwang1/CovidWorldState/issues"
   },
   "homepage": "https://github.com/eungwang1/CovidWorldState#readme",
-  "dependencies": {
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "eslint": "^8.11.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0",
     "typescript": "^4.6.2"
   }
 }
