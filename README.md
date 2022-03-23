@@ -95,6 +95,11 @@ node_modules
   ],
 }
 ```
+## 프로젝트 화면
+
+![bandicam-2022-03-23-14-59-53-596](https://user-images.githubusercontent.com/86244477/159634152-ca0e6ef1-de89-4fea-ad20-a014b40a5d53.gif)
+
+
 
 ## 참고 자료
 
