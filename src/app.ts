@@ -202,11 +202,11 @@ function renderChart(data: number[], labels: string[]) {
     CovidChart.destroy();
   }
 
-  const ctx = $('#lineChart') as HTMLCanvasElement;
-  ctx.getContext('2d');
+  const lineChart = $('#lineChart') as HTMLCanvasElement;
+  lineChart.getContext('2d');
   Chart.defaults.color = '#f5eaea';
   Chart.defaults.font.family = 'Exo 2';
-  CovidChart = new Chart(ctx, {
+  CovidChart = new Chart(lineChart, {
     type: 'line',
     data: {
       labels,
