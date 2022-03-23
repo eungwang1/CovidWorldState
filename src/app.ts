@@ -87,24 +87,29 @@ async function handleListClick(event: any) {
   clearRecoveredList();
   startLoadingAnimation();
   isDeathLoading = true;
-  const { data: deathResponse } = await fetchCountryInfo(
-    selectedId,
-    CovidStatus.Deaths
-  );
-  const { data: recoveredResponse } = await fetchCountryInfo(
-    selectedId,
-    CovidStatus.Recovered
-  );
-  const { data: confirmedResponse } = await fetchCountryInfo(
-    selectedId,
-    CovidStatus.Confirmed
-  );
-  endLoadingAnimation();
-  setDeathsList(deathResponse);
-  setTotalDeathsByCountry(deathResponse);
-  setRecoveredList(recoveredResponse);
-  setTotalRecoveredByCountry(recoveredResponse);
-  setChartData(confirmedResponse);
+  try {
+    const { data: deathResponse } = await fetchCountryInfo(
+      selectedId,
+      CovidStatus.Deaths
+    );
+    const { data: recoveredResponse } = await fetchCountryInfo(
+      selectedId,
+      CovidStatus.Recovered
+    );
+    const { data: confirmedResponse } = await fetchCountryInfo(
+      selectedId,
+      CovidStatus.Confirmed
+    );
+    endLoadingAnimation();
+    setDeathsList(deathResponse);
+    setTotalDeathsByCountry(deathResponse);
+    setRecoveredList(recoveredResponse);
+    setTotalRecoveredByCountry(recoveredResponse);
+    setChartData(confirmedResponse);
+  } catch (error) {
+    alert('해당국가의 API정보를 불러올 수 없습니다. 다른 국가도 확인해보세요');
+    location.reload();
+  }
   isDeathLoading = false;
 }
 
@@ -178,13 +183,17 @@ async function setupData() {
   setCountryRanksByConfirmedCases(data);
   setLastUpdatedTimestamp(data);
 }
-
+let CovidChart: any;
 function renderChart(data: any[], labels: any[]) {
+  if (CovidChart) {
+    CovidChart.destroy();
+  }
+
   const ctx = $('#lineChart') as HTMLCanvasElement;
   ctx.getContext('2d');
   Chart.defaults.color = '#f5eaea';
   Chart.defaults.font.family = 'Exo 2';
-  new Chart(ctx, {
+  CovidChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels,
