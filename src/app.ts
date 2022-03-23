@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { Chart } from 'chart.js';
-
+import { Chart, registerables } from 'chart.js';
+Chart.register(...registerables);
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -132,7 +132,6 @@ function clearDeathList() {
 
 function setTotalDeathsByCountry(data: any) {
   deathsTotal.innerText = data[0].Cases;
-  console.log(data);
 }
 
 function setRecoveredList(data: any) {
@@ -180,7 +179,7 @@ async function setupData() {
   setLastUpdatedTimestamp(data);
 }
 
-function renderChart(data: any, labels: any) {
+function renderChart(data: any[], labels: any[]) {
   const ctx = $('#lineChart') as HTMLCanvasElement;
   ctx.getContext('2d');
   Chart.defaults.color = '#f5eaea';
